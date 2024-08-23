@@ -40,6 +40,10 @@ target_link_libraries (binary LINK_PUBLIC fsst)
 target_link_libraries (binary LINK_PUBLIC Threads::Threads)
 set_target_properties(binary PROPERTIES OUTPUT_NAME fsst)
 
+add_executable(print_table print_table.cpp)
+target_link_libraries (print_table LINK_PUBLIC fsst)
+set_target_properties(print_table PROPERTIES OUTPUT_NAME print_table)
+
 add_library(fsst12 libfsst12.cpp)
 add_executable(binary12 fsst.cpp)
 target_link_libraries (binary12 LINK_PUBLIC fsst12)
