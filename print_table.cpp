@@ -56,9 +56,15 @@ int main(int argc, char* argv[]) {
 		fprintf(stdout, "symbol[%ld] = [", i);
 		for (size_t k = 0; k < len; k++) {
 			int character = (symbol >> 8*k) & 0xFF;
-			if (isalnum(character)) {
+			if (character > 32 && character < 127) {
 				putc(character, stdout);
-			} else {
+			} else if (character == ' ') {
+				fprintf(stdout, " ' ' ");
+			} else if (character == '\n') {
+				fprintf(stdout, " '\\n' ");
+			} else if (character == '\t') {
+				fprintf(stdout, " '\\t' ");
+		        } else {
 				fprintf(stdout, " 0x%x ", character);
 			}
 		}
